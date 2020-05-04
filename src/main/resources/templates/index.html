@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:float="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="mitCSS.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript" src="mitScript.js"></script>
+    <title>Forside</title>
+</head>
+<body>
+
+<div class="container container-custom">
+
+    <br>
+ <div>
+    <h1 >Vejret på </h1>
+    <h1 th:text="${data.name}"></h1>
+ </div>
+    <br>
+
+    <img th:src="@{${weather.icon}}"/>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <span><b>Tidspunktet </b></span>
+                <br>
+                <span th:text="${dato}" ></span>
+                <br>
+                <br>
+                <span><b>Føles som &#8451 </b></span>
+                <br>
+                <span th:text="${data.main.feels_like}" ></span>
+                <br>
+                <br>
+                <span><b>Sigtbarhed km </b></span>
+                <br>
+                <span th:text="${sigtbarhed}" ></span>
+                <br>
+                <br>
+            </div>
+            <div class="col">
+                <span><b>Beskrivelse </b></span>
+                <br>
+                <span th:text="${weather.description}" ></span>
+                <br>
+                <br>
+                <span><b>Vindstyrke m/s </b></span>
+                <br>
+                <span th:text="${data.wind.speed}" ></span>
+                <br>
+                <br>
+                <span><b>Skydække % </b></span>
+                <br>
+                <span th:text="${data.clouds.all}" ></span>
+                <br>
+                <br>
+            </div>
+            <div class="col">
+                <span><b>Temperatur &#8451 </b></span>
+                <br>
+                <span th:text="${data.main.temp}" ></span>
+                <br>
+                <br>
+                <span><b>Luftfugtighed % </b></span>
+                <br>
+                <span th:text="${data.main.humidity}" ></span>
+                <br>
+                <br>
+                <span><b>Lufttryk Hektopascal </b></span>
+                <br>
+                <span th:text="${data.main.pressure}" ></span>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <img th:src="@{/sunrise.jpg}" width="50"/>
+            </div>
+            <div class="col">
+                <span th:text="${sunrise}" ></span>
+            </div>
+            <div class="col">
+                <img th:src="@{/sunset.jpg}" width="50"/>
+            </div>
+            <div class="col">
+                <span th:text="${sunset}" ></span>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+
+    <h1>Temperaturer</h1>
+
+    <h3 class="underOverskrift">på dine tidligere besøg på siden</h3>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <table class="histDatoer">
+                    <tr id="historik" th:each="hd : ${historiskeDatoer}" >
+                        <td class="tdDato" th:text="${hd}"></td>
+                    </tr>
+
+                </table>
+            </div>
+            <!--nested for each til icon i weather -->
+            <div class="col">
+                <table class="histVejr">
+                    <tr th:each="h : ${samlet}">
+                        <td class="tdVejr" th:text="${h.main.temp}"></td>
+                        <td th:each="w : ${h.weather}">
+                            <img th:src="@{${w.icon}}"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <h1>Luftfugtighed i procenter</h1>
+
+    <h3 class="underOverskrift">på dine tidligere besøg på siden</h3>
+
+<div id="top_x_div" style="width: 800px; height: 600px;"></div>
+
+
+</div>
+</body>
+ </html>

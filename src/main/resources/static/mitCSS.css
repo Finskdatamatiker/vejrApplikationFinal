@@ -1,0 +1,55 @@
+
+
+body {
+    max-width: 700px;
+    margin: auto;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    background: ivory;
+
+}
+
+.container.container-custom{
+    background: white;
+    text-align:center;
+}
+
+/*display inline gør, at to headlines kan stå ved siden af hinanden*/
+h1 {
+    color: darkcyan;
+    text-align:center;
+    display: inline;
+}
+
+.underOverskrift {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: darkcyan;
+    text-align:center;
+}
+
+.histDatoer{
+    margin-top: 20px;
+    margin-left: 130px;
+}
+
+span{
+    font-size: large;
+    margin-top:10px;
+    margin-bottom: 10px;
+    display:inline-block;
+}
+
+.tdDato
+{
+
+    padding-top: 23px;
+    padding-bottom: 54px;
+}
+
+.tdVejr
+{
+
+    padding-right: 25px;
+}
+
